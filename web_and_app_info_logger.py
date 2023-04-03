@@ -25,7 +25,7 @@ def active_window_grabber():
         if active_window == 0:
             window_title = "Desktop"
         if window_title != "":
-            print(f"Active window changed to: {window_title}")
+            return window_title
 
 
 def main():
