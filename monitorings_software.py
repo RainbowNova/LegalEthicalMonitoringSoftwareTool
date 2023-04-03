@@ -15,5 +15,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-# Dit is een test comment om mergen te testen. - Keano
