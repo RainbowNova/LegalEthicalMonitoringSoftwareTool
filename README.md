@@ -14,10 +14,12 @@ This MoSoT is meant to be a practice project for us to learn about the legals, e
 The choice for a MoSoT came from the idea that remote/hybrid work has become bigger since COVID-19, meaning that monitoring the productivity of employees digitally has become a bigger concern for companies. We thought making a MoSoT ourself would be a good way to get familiar with the legals, ethics and necessary security within IT(-systems). Also, we think the fact multiple MoSoTs (both commercial and open source) already exist could guide us in knowing what's possible, what's allowed and how it could be done.
 
 # (Potential) Functionalities
-
+- Python V3.11.2
 
 # Sources 
+Currently none.
 
+# Temp. Markdown Cheatsheet
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 Temp. Markdown Cheatsheet
