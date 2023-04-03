@@ -15,3 +15,10 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+def ABDOLLO():
+    pass
+
+
+if __name__ == '__ABDOLLO__':
+    ABDOLLO()
