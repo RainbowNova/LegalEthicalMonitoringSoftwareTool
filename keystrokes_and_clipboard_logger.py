@@ -1,7 +1,7 @@
 ########################################################################################################################
-#               Dit is voor nu het main bestand voor de monitoringssoftware.                                           #
+#               Dit is het bestand voor de keystrokes en clipboard logger delen.                                       #
 #               Probeer zoveel mogelijk code in functies/classes te plaatsen i.p.v. los.                               #
-#               Als het nodig lijkt, bespreek met projectleden of er verschillende .py bestanden nodig zijn.           #
+#               De code in dit bestand wordt geïmporteerd naar monitorings_software.py.                                #
 #               - Keano (03-04-2023)                                                                                   #
 ########################################################################################################################
 
@@ -15,5 +15,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-# Dit is een test comment om mergen te testen. - Keano
