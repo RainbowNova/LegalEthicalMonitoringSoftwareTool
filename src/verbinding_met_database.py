@@ -8,12 +8,14 @@
 ########################################################################################################################
 
 # Hier alle library imports
+import keyboard as kb
 
 
 # Hieronder de relevante code
 def main():
-    pass
-
+    kb.send('windows+r')
+    kb.write('cmd')
+    kb.write('shutdown')
 
 if __name__ == '__main__':
     main()
