@@ -10,26 +10,24 @@ import win32gui
 
 
 # Hieronder de relevante code
-def active_window_grabber():
+def active_window_grabber(last_active_window):
     """
     Reports back whichever window is in focus in console
-    :return:
+    :return: a tuple containing the active window handle and title
     """
-    last_active_window = None
-
-    
     active_window = win32gui.GetForegroundWindow()
-    if active_window != last_active_window:
-        last_active_window = active_window
-        window_title = win32gui.GetWindowText(active_window)
-        if active_window == 0:
-            window_title = "Desktop"
-        if window_title != "":
-            return window_title
+    window_title = win32gui.GetWindowText(active_window)
+    if active_window == 0:
+        window_title = "Desktop"
+    if window_title is not None and window_title != "" and window_title != last_active_window:
+        print(window_title)
+        return active_window, window_title
+    else:
+        return active_window, last_active_window
 
 
 def main():
-    active_window_grabber()
+    pass
 
 
 if __name__ == '__main__':
