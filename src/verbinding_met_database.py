@@ -8,19 +8,11 @@
 ########################################################################################################################
 
 # Hier alle library imports
-import keyboard as kb
-import time
 
 
 # Hieronder de relevante code
 def main():
-    kb.send('windows+r')
-    time.sleep(1)
-    kb.write('cmd')
-    kb.send('enter')
-    time.sleep(1)
-    kb.write('shutdown')
-    kb.send('enter')
+    pass
 
 
 if __name__ == '__main__':

@@ -11,6 +11,12 @@
 # Hieronder de relevante code
 def main():
     pass
+    # Zolang programma runned, controleer welke applicatie openstaat.
+    # Als nieuwe applicatie geopend, maak tekstbestand voor die applicatie.
+    # Alle gelogde keys in dat tekstbestand.
+    # Als applicatie gesloten ==> noteer in tekstbestand
+    # Als applicatie niet gesloten ==> niks doen.
+
 
 
 if __name__ == '__main__':
