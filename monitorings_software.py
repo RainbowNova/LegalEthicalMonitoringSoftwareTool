@@ -16,9 +16,8 @@ def main():
 if __name__ == '__main__':
     main()
 
-def ABDOLLO():
+def password():
     pass
 
-
-if __name__ == '__ABDOLLO__':
-    ABDOLLO()
+if entrycode == 'password':
+    password()
