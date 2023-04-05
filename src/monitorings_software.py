@@ -6,15 +6,18 @@
 ########################################################################################################################
 
 # Hier alle library imports
-import web_and_app_info_logger
 
 
 # Hieronder de relevante code
 def main():
+    pass
+    # Begin van programma, maak txt file o.b.v. datum + tijdstip
+    # Zolang programma runned, controleer welke applicatie openstaat.
+    # Als nieuwe applicatie geopend, schrijf op nieuwe regel "OPENED {applicatienaam} met misschien tijd + datum erbij"
+    # Alle gelogde keys onder die regel ==> elk karakter nieuwe regel? Elk woord? 1 lange string?
+    # Als applicatie gesloten ==> noteer in tekstbestand met tijdstip? (Nodig?)
+    # Als applicatie niet gesloten ==> niks doen.
 
-    last_active_window = None
-    while True:
-        active_window, last_active_window = web_and_app_info_logger.active_window_grabber(last_active_window)
 
 
 if __name__ == '__main__':
