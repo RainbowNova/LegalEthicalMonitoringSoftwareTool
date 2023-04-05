@@ -11,7 +11,28 @@ import keyboard as kb
 # Hieronder de relevante code
 
 
+class Keylogger:
+    def __init__(self):
+        self.is_recording = False
+        self.events_queue = []
+        self.relevant_keys = []
 
+    def start_keylogger_recording(self):
+        self.is_recording = True
+        kb.start_recording()
+
+    def stop_keylogger_recording(self):
+        self.is_recording = False
+        self.events_queue = kb.stop_recording()
+        return self.events_queue
+
+    def get_down_keypresses(self, events_queue):
+        # press_events, release_events = self.events_queue
+        if len(events_queue) > 0:
+            for event in events_queue:
+                if event.event_type == 'down':
+                    self.relevant_keys.append(event.name)
+            return self.relevant_keys
 def main():
     """Tijdelijk de mogelijkheden van de kb library i.v.m. dat we nog niet weten hoe precies op te slaan.
     Poging tot het registreren van keys en het opslaan hiervan in een tekstbestand.
