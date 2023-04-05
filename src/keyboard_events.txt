@@ -1,1 +1,2 @@
-OPENED LegalEthicalMonitoringSoftwareTool – monitorings_software.py AT TIME 2023-04-05 12:17:07.761375
+Gebruiker: Keano S.======================================================
+LegalEthicalMonitoringSoftwareTool – monitorings_software.py
