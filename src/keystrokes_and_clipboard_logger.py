@@ -47,8 +47,7 @@ def main():
     computer_aan = True  # Wanneer data versturen? Als wachten tot apparaat uit, dan is het al te laat.
     # Rekening houden met wat als apparaat crashed? Wat als tussentijds op slaapstand / uit?
 
-    with open('keyboard_events_test.txt', 'a') as f:  # Dit moet in Mo_So.py. Woensdag verder kijken, ben nu gaar.
-        # Hier kan je bovenaan het document relevante info schrijven om de gebruiker / het apparaat te identificeren
+    # Hier kan je bovenaan het document relevante info schrijven om de gebruiker / het apparaat te identificeren
         f.write("Gebruiker: Keano S." + "\n")
         f.write("======================================================" + "\n")
         while computer_aan:
