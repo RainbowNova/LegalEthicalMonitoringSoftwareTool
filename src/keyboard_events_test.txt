@@ -1,3 +1,0 @@
-Gebruiker: Keano S.
-======================================================
-OPENED Applicatie naam A at <class 'datetime.time'>
