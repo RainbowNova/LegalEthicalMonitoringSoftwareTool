@@ -8,7 +8,8 @@
 # Hier alle library imports
 import web_and_app_info_logger
 import os
-import win32gui
+import datetime
+
 
 # Hieronder de relevante code
 def main():
@@ -20,7 +21,7 @@ def main():
         while True:
             active_window, active_window_title = web_and_app_info_logger.active_window_grabber()
             if active_window != last_active_window and active_window_title != "":
-                f.write(active_window_title + "\n")
+                f.write("OPENED " + active_window_title + " AT TIME " + str(datetime.datetime.now()) + "\n")
             last_active_window = active_window
 
     # Begin van programma, maak txt file o.b.v. datum + tijdstip
