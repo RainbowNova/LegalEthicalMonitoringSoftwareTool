@@ -1,0 +1,13 @@
+sGebruiker: Keano S.
+======================================================
+OPENED LegalEthicalMonitoringSoftwareTool – monitorings_software.py ON 2023-04-06 20:57:37.904655 
+CLIPBOARD DATA: hallo 
+CLIPBOARD DATA: kopieer dit stuk tekst 
+['d', 'i', 't', 'space', 'i', 's', 'space', 't', 'e', 'r', 'm', 'i', 'n', 'a', 'l', 'space', 'i', 'k', 'space', 'k', 'o', 'p', 'i', 'e', 'e', 'r', 'space', 'd', 'i', 't', 'space', 's', 't', 'u', 'k', 'space', 't', 'e', 'k', 's', 't', 'ctrl', 'x', 'ctrl', 'c', 'alt', 'tab'] 
+OPENED Task Switching ON 2023-04-06 20:57:55.597650 
+None 
+OPENED #general | Projectgroep Trojan - Discord ON 2023-04-06 20:57:56.684251 
+['d', 'i', 't', 'space', 'i', 's', 'space', 'd', 'i', 's', 'c', 'o', 'r', 'd', 'space', 'p', 'l', 'a', 'k', 'space', 'ctrl', 'v', 'alt', 'tab'] 
+OPENED Task Switching ON 2023-04-06 20:58:06.761843 
+None 
+OPENED LegalEthicalMonitoringSoftwareTool – monitorings_software.py ON 2023-04-06 20:58:06.919709 
