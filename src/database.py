@@ -11,28 +11,16 @@
 import mysql.connector
 
 # Create a new MySQL database connection
-db = mysql.connector.connect(
-    host="TROJAN",
-    user="TROJAN",
-    password="de mam"
+conn = mysql.connector.connect(
+    host="localhost",
+    user="YvoSchutgens",
+    password="YpaS-2002",
+    database="mydatabase"
 )
 
-# Create a new database
-cursor = db.cursor()
-cursor.execute("CREATE DATABASE mydatabase")
+cursor = conn.cursor()
 
-# Switch to the new database
-cursor.execute("USE mydatabase")
+cursor.execute("CREATE DATABASE IF NOT EXISTS mydatabase")
 
-# Create a new table
-cursor.execute("CREATE TABLE application (id INT(11) NOT NULL AUTO_INCREMENT, ApplicationName VARCHAR(255) NOT NULL, created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (id))")
+cursor.execute("CREATE TABLE IF NOT EXISTS application (id INT PRIMARY KEY, name VARCHAR(70))")
 
-# Insert some sample data
-cursor.execute("INSERT INTO users (ApplicationName) VALUES ('Discord')")
-cursor.execute("INSERT INTO users (ApplicationName) VALUES ('Word')")
-
-# Commit the changes to the database
-db.commit()
-
-# Close the database connection
-db.close()
