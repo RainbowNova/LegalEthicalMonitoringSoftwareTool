@@ -1,7 +1,0 @@
-Gebruiker: Keano S.
-======================================================
-OPENED LegalEthicalMonitoringSoftwareTool – keystrokes_and_clipboard_logger.py ON 2023-04-06 16:35:55.956630 
-CLIPBOARD DATA: testclipboard2 
-CLIPBOARD DATA: test 
-CLIPBOARD DATA: test2 
-CLIPBOARD DATA: test3 
