@@ -12,7 +12,7 @@ import win32gui
 # Main code here
 def active_window_grabber():
     """
-    Reports back whichever window is in focus in consoles
+    Reports back the window that is in focus.
     :return: a tuple containing the active window handle and title
     """
     active_window = win32gui.GetForegroundWindow()

@@ -40,8 +40,8 @@ class Keylogger:
         return self.events_queue
 
     def get_down_keypresses(self, events_queue):
-        # press_events, release_events = self.events_queue
         if len(events_queue) > 0:
+            self.relevant_keys.clear()
             for event in events_queue:
                 if event.event_type == 'down':
                     self.relevant_keys.append(event.name)
