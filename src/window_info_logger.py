@@ -15,8 +15,6 @@ def initialise_log_file(text_file):
     user = getpass.getuser()
     text_file.write(f"User: {user}" + "\n")
     text_file.write("======================================================" + "\n")
-    active_window_title = active_window_title_grabber()  # TODO: Check if these 3 lines (61-63) can be turnt into a function.
-    text_file.write(f"OPENED {active_window_title} \n")
 
 
 def active_window_title_grabber():
@@ -31,12 +29,6 @@ def active_window_title_grabber():
     elif len(window_title) == 0:
         window_title = "Task switching"
     return window_title
-
-
-def log_window_title_if_new():
-
-    return False
-    return True
 
 
 def main():
