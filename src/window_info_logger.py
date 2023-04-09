@@ -17,18 +17,34 @@ def initialise_log_file(text_file):
     text_file.write("======================================================" + "\n")
 
 
-def active_window_title_grabber():
+def active_window_and_title_grabber():
     """
     Reports back the window that is in focus.
     :return: a tuple containing the active window handle and title
     """
     active_window = win32gui.GetForegroundWindow()
     window_title = win32gui.GetWindowText(active_window)
+
     if active_window == 0:
         window_title = "Desktop"
     elif len(window_title) == 0:
         window_title = "Task switching"
-    return window_title
+    return active_window, window_title
+
+
+class WindowLogger:
+    def __init__(self, file):
+        self.active_window = None
+        self.active_window_title = None
+        self.last_window = None  # Redundant for MVP, but might prove useful in later versions.
+        self.last_window_title = None
+        self.working_file = file
+
+    def log_window(self):  # This function follows the exact same format as log_clipboard from keystrokes_and_clipboard_logger. Potential for function?
+        self.active_window, self.active_window_title = active_window_and_title_grabber()
+        if self.active_window_title != self.last_window_title:
+            self.working_file.write(f"OPENED {self.active_window_title} \n")
+            self.last_window_title = self.active_window_title
 
 
 def main():

@@ -1,20 +1,15 @@
 User: Keano
 ======================================================
-
-OPENED LegalEthicalMonitoringSoftwareTool – monitorings_software.py 
- [CLIPBOARD DATA: test4test6] test1
-OPENED Desktop 
+OPENED LegalEthicalMonitoringSoftwareTool – window_info_logger.py 
+ [CLIPBOARD DATA: if self.last_window_title and "Desktop" in self.last_window_title:] OPENED Desktop 
 
 OPENED #general | Projectgroep Trojan - Discord 
-test2[CTRL]ax [CLIPBOARD DATA: test2] 
-OPENED Desktop 
+test[CTRL]ax [CLIPBOARD DATA: test] OPENED Desktop 
 
-OPENED LegalEthicalMonitoringSoftwareTool – monitorings_software.py 
-test3
-OPENED Desktop 
+OPENED LegalEthicalMonitoringSoftwareTool – window_info_logger.py 
+testOPENED Desktop 
 
 OPENED #general | Projectgroep Trojan - Discord 
-test4
-OPENED Desktop 
+test[CTRL]axOPENED Desktop 
 
-OPENED LegalEthicalMonitoringSoftwareTool – monitorings_software.py 
+OPENED LegalEthicalMonitoringSoftwareTool – window_info_logger.py 

