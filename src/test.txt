@@ -1,0 +1,93 @@
+User: Keano
+Date & time: 2023-04-11 09:34:40.340095
+======================================================
+
+[TIME]: 09:34:40 [OPENED]: LegalEthicalMonitoringSoftwareTool – window_info_logger.py 
+[CLIPBOARD_DATA]: [\n
+]
+[CTRL]vvvvvvvvvvvvvvvvvvvvvvvvvvvac[CLIPBOARD_DATA]: [C:\Users\Keano\Documents\Python\GitTest\LegalAndEthicalKeylogger\venv\Scripts\python.exe C:\Users\Keano\Documents\Python\LegalEthicalMonitoringSoftwareTool\src\monitorings_software.py 
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+]
+c
+[TIME]: 09:34:45 [CTRL]c[CLIPBOARD_DATA]: [\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n]
+c
+[TIME]: 09:34:50 
+[TIME]: 09:34:55 [CTRL]c[CLIPBOARD_DATA]: [\n
+\n
+\n
+\n
+\n
+\n]
+c[CTRL]c[CLIPBOARD_DATA]: [\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n]
+cc
+[TIME]: 09:35:00 [CTRL][CTRL]c[CLIPBOARD_DATA]: [\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n
+\n]
+ccc
+[TIME]: 09:35:05 
