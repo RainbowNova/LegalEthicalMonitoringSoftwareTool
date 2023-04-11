@@ -26,18 +26,25 @@ def active_window_and_title_grabber():
 
 
 class WindowLogger:
-    def __init__(self, file):
+    def __init__(self, csv_file):
         self.active_window = None
         self.active_window_title = None
         self.last_window = None  # Redundant for MVP, but might prove useful in later versions.
         self.last_window_title = None
-        self.working_file = file
+        self.working_file = csv_file
 
-    def log_window(self):  # This function follows the exact same format as log_clipboard from keystrokes_and_clipboard_logger. Potential for function?
+    def screen_changed(self):
         self.active_window_and_title_grabber()
         if self.active_window_title != self.last_window_title:
-            self.working_file.write(f"OPENED {self.active_window_title} \n")
-            self.last_window_title = self.active_window_title
+            return True
+        else:
+            return False
+
+    def log_window(self):  # This function follows the exact same format as log_clipboard from keystrokes_and_clipboard_logger. Potential for function?
+        # Return only the important data, make one writerow in moso.py
+        # Separare window and application
+        self.working_file.writerow([f"OPENED {self.active_window_title}"])
+        self.last_window_title = self.active_window_title
 
     def active_window_and_title_grabber(self):
         """

