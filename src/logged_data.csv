@@ -1,12 +1,16 @@
 Device name: DESKTOP-54UO011
-Date & time: 2023-04-11 20:44:28.179360
+Date & time: 2023-04-11 20:55:53.957337
 ======================================================
 datetime,window_title,data_ID,logged_data
-20:44:28,LegalEthicalMonitoringSoftwareTool – monitorings_software.py,0,
-20:44:28,LegalEthicalMonitoringSoftwareTool – monitorings_software.py,1,from datetime import datetime
-20:44:28,Desktop,0,test1 in terminal[SHIFT]!
-20:44:32,#general | Projectgroep Trojan - Discord,0,
-20:44:35,#general | Projectgroep Trojan - Discord,1,test2 in discord!
-20:44:32,Desktop,0,test2 in term[CTRL][BACKSPACE]discord[SHIFT]![CTRL]ax
-20:44:35,LegalEthicalMonitoringSoftwareTool – monitorings_software.py,0,
-20:44:39,LegalEthicalMonitoringSoftwareTool – monitorings_software.py,1,hicalMonitoringSoftwareTool\venv\Scripts\python.exe C:\Users\Kean
+20:55:53,LegalEthicalMonitoringSoftwareTool – keystrokes_and_clipboard_logger.py,0,
+20:55:54,LegalEthicalMonitoringSoftwareTool – keystrokes_and_clipboard_logger.py,1,test discord!
+20:55:54,Desktop,0,yrest
+20:55:56,#general | Projectgroep Trojan - Discord,0,
+20:55:58,#general | Projectgroep Trojan - Discord,1,discord
+20:55:56,Desktop,0,discord[CTRL]ax
+20:55:59,LegalEthicalMonitoringSoftwareTool – keystrokes_and_clipboard_logger.py,0,
+20:55:59,Desktop,0,terminal[SHIFT]!
+20:56:01,#general | Projectgroep Trojan - Discord,0,
+20:56:01,Desktop,0,
+20:56:01,LegalEthicalMonitoringSoftwareTool – keystrokes_and_clipboard_logger.py,0,
+20:56:02,LegalEthicalMonitoringSoftwareTool – text_file.txt,0,

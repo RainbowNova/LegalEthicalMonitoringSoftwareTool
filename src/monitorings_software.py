@@ -54,14 +54,14 @@ def main():
             # if window change or time has passed
             if window_logger_object.screen_changed() or check_if_time_passed(old_date_and_time, note_interval_seconds):
                 window_title = window_logger_object.log_window()
-                kc_logger_object.stop_keylogger()
+
                 logged_keys = kc_logger_object.get_current_logged_keys()
                 data_id = 0
                 # save currently logged data to csv with old time + old app & window data + data ID = 0
                 csvreader.writerow(
                     [f"{time_to_datetime(old_date_and_time)}", f"{window_title}", f"{data_id}", f"{logged_keys}"])
                 old_date_and_time = time.time()
-                kc_logger_object.start_keylogger()
+
             # if clipboard changed
             if kc_logger_object.clipboard_changed():
                 clipboard_date_and_time, data = kc_logger_object.log_clipboard()
