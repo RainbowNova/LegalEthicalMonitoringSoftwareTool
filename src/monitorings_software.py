@@ -34,7 +34,7 @@ def initialise_log_file(csv_file):
 
     # Vaststellen kolommen
     # vóór versturen naar DB moet device_nam
-    csv_file.writerow(["datetime", "application_title", "window_title", "data_ID", "logged_data"])
+    csv_file.writerow(["datetime", "window_title", "data_ID", "logged_data"])
 
 
 # Main code here
@@ -45,23 +45,24 @@ def main():
     old_date_and_time = time.time()
     note_interval_seconds = 2
 
-    with open('logged_data.csv', 'a+', newline='') as f, open("text_file.txt", "w+") as txt_file:
+    with open('logged_data.csv', 'a+', newline='') as f, open('text_file.txt', 'w+') as txt_file:
         csvreader = csv.writer(f)
         initialise_log_file(csvreader)  # Note user info and starting date + time of keylogger.
         kc_logger_object = kclogger.KeysClipboardLogger(csvreader, txt_file)  # Start keylogger.
         window_logger_object = wilogger.WindowLogger(csvreader)  # Start window logger.
         while True:
-            # csv_file.writerow(["datetime", "application_title", "window_title", "data_ID", "logged_data"])
+            # csv_file.writerow(["datetime", "window_title", "data_ID", "logged_data"])
 
             # if window change
             if window_logger_object.screen_changed():
                 window_title = window_logger_object.log_window()  # TODO: also add application title!
+                kc_logger_object.stop_keylogger()
                 logged_keys = kc_logger_object.get_current_logged_keys()
                 data_id = 0
                 # save currently logged data to csv with old time + old app & window data + data ID = 0
-                csvreader.writerow([f"{time_to_datetime(old_date_and_time)}", f"{window_title}", f"{window_title}", f"{data_id}", f"{logged_keys}"])
-
+                csvreader.writerow([f"{time_to_datetime(old_date_and_time)}", f"{window_title}", f"{data_id}", f"{logged_keys}"])
                 old_date_and_time = time.time()
+                kc_logger_object.start_keylogger()
             # if minute passed
                 # save currently logged data to csv with old time + old / current app & window data + data ID = 0
             # if clipboard changed

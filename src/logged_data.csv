@@ -1,12 +1,9 @@
 Device name: DESKTOP-54UO011
-Date & time: 2023-04-11 19:24:04.312839
+Date & time: 2023-04-11 20:15:33.327191
 ======================================================
-datetime,application_title,window_title,data_ID,logged_data
-19:24:04,LegalEthicalMonitoringSoftwareTool – monitorings_software.py,LegalEthicalMonitoringSoftwareTool – monitorings_software.py,0,
-19:24:04,Desktop,Desktop,0,
-19:24:05,Task switching,Task switching,0,
-19:24:05,#capitalisma | DIY DISCOVERED - Discord,#capitalisma | DIY DISCOVERED - Discord,0,
-19:24:06,#casus | Projectgroep Trojan - Discord,#casus | Projectgroep Trojan - Discord,0,
-19:24:13,#capitalisma | DIY DISCOVERED - Discord,#capitalisma | DIY DISCOVERED - Discord,0,
-19:24:19,Desktop,Desktop,0,
-19:24:20,LegalEthicalMonitoringSoftwareTool – monitorings_software.py,LegalEthicalMonitoringSoftwareTool – monitorings_software.py,0,
+datetime,window_title,data_ID,logged_data
+20:15:33,LegalEthicalMonitoringSoftwareTool – logged_data.csv,0,
+20:15:33,Desktop,0,test1
+20:15:34,#casus | Projectgroep Trojan - Discord,0,
+20:15:34,Desktop,0,test2[CTRL]ax
+20:15:36,LegalEthicalMonitoringSoftwareTool – logged_data.csv,0,
