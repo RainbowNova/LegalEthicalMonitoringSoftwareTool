@@ -29,7 +29,7 @@ def event_to_string(event):
 
 
 class KeysClipboardLogger:
-    def __init__(self, csv_file, txt_file):
+    def __init__(self, csv_file):
         self.old_clipboard = None
         self.current_clipboard = None
         self.working_file = csv_file
