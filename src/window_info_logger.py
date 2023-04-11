@@ -42,12 +42,6 @@ class WindowLogger:
             return False
 
     def log_window(self):  # This function follows the exact same format as log_clipboard from keystrokes_and_clipboard_logger. Potential for function?
-        # TODO: code for separating window title into application and window title here!!!!
-        # application_title = None
-        # window_title = None
-        # return application_title, window_title
-
-        # for now, only return full title
         return self.active_window_title
 
 
