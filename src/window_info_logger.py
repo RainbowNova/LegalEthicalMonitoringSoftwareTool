@@ -42,7 +42,7 @@ class WindowLogger:
             return False
 
     def log_window(self):  # This function follows the exact same format as log_clipboard from keystrokes_and_clipboard_logger. Potential for function?
-        return self.active_window_title
+        return self.last_window_title
 
 
     def active_window_and_title_grabber(self):
