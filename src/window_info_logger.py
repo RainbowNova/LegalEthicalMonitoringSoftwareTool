@@ -34,17 +34,16 @@ class WindowLogger:
         self.working_file = csv_file
 
     def screen_changed(self):
-        self.active_window_and_title_grabber()
-        if self.active_window_title != self.last_window_title:
+        self.last_window_title = self.active_window_title  # The last active window is set to be the last.
+        self.active_window_and_title_grabber()  # Current active window is set as active window.
+        if self.active_window_title != self.last_window_title:  # Detect change between previous 2.
             return True
         else:
             return False
 
     def log_window(self):  # This function follows the exact same format as log_clipboard from keystrokes_and_clipboard_logger. Potential for function?
-        # Return only the important data, make one writerow in moso.py
-        # Separare window and application
-        self.working_file.writerow([f"OPENED {self.active_window_title}"])
-        self.last_window_title = self.active_window_title
+        return self.last_window_title
+
 
     def active_window_and_title_grabber(self):
         """

