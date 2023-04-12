@@ -13,6 +13,7 @@ import socket
 from datetime import datetime, timedelta
 import csv
 
+MAX_CLIPBOARD_LENGTH = 100
 
 def check_if_time_passed(old_time, time_passed):
     current_time = datetime.now()
@@ -32,6 +33,14 @@ def initialise_log_file(csv_file):
     csv_file.writerow(["datetime", "window_title", "data_ID", "logged_data"])
 
 
+def check_logged_data(data, data_id):
+    if len(data) == 0:
+        data = "No input available."
+    elif len(data) > MAX_CLIPBOARD_LENGTH and data_id == 1:
+        data = data[0:MAX_CLIPBOARD_LENGTH]
+    return data
+
+
 # Main code here
 def main():
     if os.path.isfile("logged_data.csv"):
@@ -49,8 +58,9 @@ def main():
             # if window change or time has passed
             if window_logger_object.screen_changed() or check_if_time_passed(old_date_and_time, note_interval_seconds):
                 logged_data = kc_logger_object.get_current_logged_keys()
-                window_title = window_logger_object.log_window()
                 data_id = 0
+                logged_data = check_logged_data(logged_data, data_id)
+                window_title = window_logger_object.log_window()
                 # save currently logged data to csv with old time + old app & window data + data ID = 0
                 csvreader.writerow(
                     [f"{old_date_and_time}", f"{window_title}", f"{data_id}", f"{logged_data}"])
@@ -59,8 +69,9 @@ def main():
             # if clipboard changed
             if kc_logger_object.clipboard_changed():
                 clipboard_date_and_time, logged_data = kc_logger_object.log_clipboard()
-                window_title = window_logger_object.log_window()
+                logged_data = check_logged_data(logged_data, data_id)
                 data_id = 1
+                window_title = window_logger_object.log_window()
                 csvreader.writerow(
                     [f"{clipboard_date_and_time}", f"{window_title}", f"{data_id}", f"{logged_data}"])
 
