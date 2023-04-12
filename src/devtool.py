@@ -11,53 +11,52 @@ import tkinter as tk
 import pandas as pd
 
 
+class DataReader:
+    def __init__(self, file):
+        self.file_from_db = file
+        self.edited_file = None
+
+    def read_csv(self, file):
+        # Could in theory be replaced with a file search box if it's ever decided to not have a set path like this
+        self.file_from_db = pd.read_csv(file, encoding="ISO-8859-1")
+
+    def populate_listbox(self, file, listbox):
+        listbox.delete(0, tk.END)
+        for index, row in file.iterrows():
+            item = f"{row['datetime']} - {row['logged_data']}"
+            listbox.insert(tk.END, item)
+
+    def sort_dataframe(self, column):
+        self.edited_file = self.file_from_db.sort_values(by=column)
+
+    def filter_dataframe(self, column, value):
+        self.edited_file = self.file_from_db[self.file_from_db[column] == value]
+
+    def open_file(self):
+        self.read_csv(self.file_from_db)
+        self.populate_listbox(self.file_from_db, listbox)
+
+    def sort_by_datetime(self):
+        self.sort_dataframe('datetime')
+        self.populate_listbox(self.edited_file, listbox)
+
+    def filter_by_error(self, ):
+        self.filter_dataframe('severity', 'Error')
+        self.populate_listbox(self.edited_file, listbox)
+
+
 # Main code here
-def read_csv():
-    # Could in theory be replaced with a file search box if it's ever decided to not have a set path like this
-    df = pd.read_csv('logged_data.csv', encoding="ISO-8859-1")
-    return df
-
-
-def populate_listbox(df, listbox):
-    listbox.delete(0, tk.END)
-    for index, row in df.iterrows():
-        item = f"{row['datetime']} - {row['logged_data']}"
-        listbox.insert(tk.END, item)
-
-
-def sort_dataframe(df, column):
-    df_sorted = df.sort_values(by=column)
-    return df_sorted
-
-
-def filter_dataframe(df, column, value):
-    df_filtered = df[df[column] == value]
-    return df_filtered
-
-
-def open_file():
-    df = read_csv()
-    populate_listbox(df, listbox)
-
-
-def sort_by_datetime():
-    df_sorted = sort_dataframe(df, 'datetime')
-    populate_listbox(df_sorted, listbox)
-
-
-def filter_by_error():
-    df_filtered = filter_dataframe(df, 'severity', 'Error')
-    populate_listbox(df_filtered, listbox)
 
 
 # sets up TKinter environment
 root = tk.Tk()
+reader = DataReader('logged_data.csv')
 
 # Sets up the buttons
 button_frame = tk.Frame(root)
-open_button = tk.Button(button_frame, text="Open", command=open_file)
-sort_button = tk.Button(button_frame, text="Sort by datetime", command=sort_by_datetime)
-filter_button = tk.Button(button_frame, text="Filter by Error", command=filter_by_error)
+open_button = tk.Button(button_frame, text="Open", command=reader.open_file)
+sort_button = tk.Button(button_frame, text="Sort by datetime", command=reader.sort_by_datetime)
+filter_button = tk.Button(button_frame, text="Filter by Error", command=reader.filter_by_error)
 
 # Sets up the listbox that will get filled
 listbox = tk.Listbox(root)
@@ -75,7 +74,3 @@ root.mainloop()
 
 def main():
     pass
-
-
-if __name__ == '__main__':
-    main()
