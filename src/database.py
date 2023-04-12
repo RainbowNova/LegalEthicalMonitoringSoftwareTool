@@ -32,19 +32,34 @@ cursor.execute("CREATE TABLE IF NOT EXISTS LoggedData (data_id INT PRIMARY KEY, 
 with open("logged_data.csv", "r") as file:
     reader = csv.reader(file)
     first_row = next(reader)
-    device_name = first_row[3]
-    print(device_name)
-    next(reader)  # Skip the header row
+    device_name = first_row[0][len("Device name: "):]
+    next(reader)  # Date & Time line
+    next(reader)  # ===== line
+    next(reader)  # Headers line
     for row in reader:
-        # Extract the data for each column
-        column1 = row[0]
-        column2 = int(row[1])
-        column3 = row[2]
-        column4 = float(row[3])
+        # datetime,window_title,data_ID,logged_data ==> need to convert window_title to ID! For now auto-increment, but needs to change later because of security issues!
+        main_column1 = device_name
+        main_column2 = row[0]
+        main_column3 = row[1]
+        main_column4 = row[3]
+        main_column5 = row[2]
 
-        # Insert the data into the appropriate MySQL table
-        cursor.execute("INSERT INTO table1 (column1, column2) VALUES (%s, %s)", (column1, column2))
-        cursor.execute("INSERT INTO table2 (column3, column4) VALUES (%s, %s)", (column3, column4))
+        cursor = mydb.cursor()
+        # Insert data into Main table, with foreign keys
+        cursor.execute(
+            "INSERT INTO Windows (window_title) VALUES (%s) ON DUPLICATE KEY UPDATE window_id=LAST_INSERT_ID(window_id)",
+            (row[2],))
+        window_id = cursor.lastrowid
+
+        # Insert data into LoggedData table
+        cursor.execute(
+            "INSERT INTO LoggedData (type_of_data) VALUES (%s) ON DUPLICATE KEY UPDATE data_id=LAST_INSERT_ID(data_id)",
+            (row[4],))
+        data_id = cursor.lastrowid
+
+        cursor.execute(
+            "INSERT INTO Main (PCname_id, date_and_time, window_id, logged_data, data_id) VALUES (%s, %s, %s, %s, %s)",
+            (row[0], row[1], window_id, row[3], data_id))
 
 # Commit the changes to the database
 conn.commit()
