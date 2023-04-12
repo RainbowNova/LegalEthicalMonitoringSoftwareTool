@@ -24,10 +24,13 @@ cursor = conn.cursor()
 
 cursor.execute("CREATE DATABASE IF NOT EXISTS mydatabase")
 
-cursor.execute("CREATE TABLE IF NOT EXISTS Main (PCname_id INT PRIMARY KEY, date_and_time datetime,"
-               " time VARCHAR(30), window_title VARCHAR(50), logged_data VARCHAR(100), data_id VARCHAR(30))")
-cursor.execute("CREATE TABLE IF NOT EXISTS Windows (window_id INT PRIMARY KEY, window_name VARCHAR(30))")
-cursor.execute("CREATE TABLE IF NOT EXISTS LoggedData (data_id INT PRIMARY KEY, type_of_data VARCHAR(70))")
+cursor.execute("CREATE TABLE IF NOT EXISTS Main (PCname_id VARCHAR(20) PRIMARY KEY, date_and_time datetime,"
+               " window_id INT, FOREIGN KEY (window_id) REFERENCES Windows(window_id), logged_data VARCHAR(100),"
+               " data_id INT, FOREIGN KEY (data_id) REFERENCES LoggedData(data_id)")
+cursor.execute("CREATE TABLE IF NOT EXISTS Windows (window_id INT PRIMARY KEY AUTO_INCREMENT,"
+               " window_title VARCHAR(30))")
+cursor.execute("CREATE TABLE IF NOT EXISTS LoggedData (data_id INT PRIMARY KEY AUTO_INCREMENT,"
+               " type_of_data VARCHAR(70))")
 
 with open("logged_data.csv", "r") as file:
     reader = csv.reader(file)
