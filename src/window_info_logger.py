@@ -27,8 +27,7 @@ def active_window_and_title_grabber():
 
 class WindowLogger:
     def __init__(self, csv_file):
-        self.active_window = None
-        self.active_window_title = None
+        self.active_window, self.active_window_title = active_window_and_title_grabber()
         self.last_window = None  # Redundant for MVP, but might prove useful in later versions.
         self.last_window_title = None
         self.working_file = csv_file

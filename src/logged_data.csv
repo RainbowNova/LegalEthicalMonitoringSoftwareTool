@@ -1,12 +1,9 @@
 Device name: DESKTOP-54UO011
-Date & time: 2023-04-12 00:03:52.788198
+Date & time: 2023-04-12 12:26:07.165629
 ======================================================
 datetime,window_title,data_ID,logged_data
-2023-04-12 00:03:52.788198,None,0,
-2023-04-12 00:03:52.872852,None,1,
-2023-04-12 00:03:55.149196,LegalEthicalMonitoringSoftwareTool – keystrokes_and_clipboard_logger.py,1,"n\LegalEthicalMonitoringSoftwareTool\venv\Scripts\python.exe C:\Users\Keano\Documents\Python\LegalEthicalMonitoringSoftwareTool\src\monitorings_software.py 
-"
-2023-04-12 00:03:52.871857,LegalEthicalMonitoringSoftwareTool – keystrokes_and_clipboard_logger.py,0,[CTRL]c[CTRL]s
-2023-04-12 00:04:01.134617,LegalEthicalMonitoringSoftwareTool – monitorings_software.py,0,
-2023-04-12 00:04:07.888088,LegalEthicalMonitoringSoftwareTool – keystrokes_and_clipboard_logger.py,0,
-2023-04-12 00:05:07.888664,LegalEthicalMonitoringSoftwareTool – keystrokes_and_clipboard_logger.py,0,
+2023-04-12 12:26:07.254405,LegalEthicalMonitoringSoftwareTool – window_info_logger.py,1,self.active_window_title
+2023-04-12 12:26:07.165629,LegalEthicalMonitoringSoftwareTool – window_info_logger.py,0,
+2023-04-12 12:26:08.482303,Desktop,0,
+2023-04-12 12:26:08.603151,#general | Projectgroep Trojan - Discord,0,
+2023-04-12 12:26:09.082512,Desktop,0,
