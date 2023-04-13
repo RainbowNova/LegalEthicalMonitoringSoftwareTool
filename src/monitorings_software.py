@@ -63,7 +63,7 @@ def main():
                 window_title = window_logger_object.log_window()
                 # save currently logged data to csv with old time + old app & window data + data ID = 0
                 csvreader.writerow(
-                    [f"{old_date_and_time}", f"{window_title}", f"{data_id}", f"{logged_data}"])
+                    [f"{old_date_and_time.strftime('%Y-%m-%d %H:%M:%S')}", f"{window_title}", f"{data_id}", f"{logged_data}"])
                 old_date_and_time = datetime.now()  # Yes, this is only supposed to happen if window changed or minute passed.
 
             # if clipboard changed
@@ -73,7 +73,7 @@ def main():
                 data_id = 1
                 window_title = window_logger_object.log_window()
                 csvreader.writerow(
-                    [f"{clipboard_date_and_time}", f"{window_title}", f"{data_id}", f"{logged_data}"])
+                    [f"{clipboard_date_and_time.strftime('%Y-%m-%d %H:%M:%S')}", f"{window_title}", f"{data_id}", f"{logged_data}"])
 
 
 if __name__ == '__main__':
