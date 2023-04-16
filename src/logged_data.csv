@@ -1,16 +1,19 @@
 Device name: DESKTOP-54UO011
-Date & time: 2023-04-16 11:55:42.447571
+Date & time: 2023-04-16 12:08:30.714899
 ======================================================
 datetime,window_title,data_ID,logged_data
-2023-04-16 11:55:42,None,0,No input available.
-2023-04-16 11:55:42,None,1,De tekst “menu” wordt in het csv-bestand genoteerd.
-2023-04-16 11:55:42,LegalEthicalMonitoringSoftwareTool – keystrokes_and_clipboard_logger.py,0,[TAB][ENTER][LEFT WINDOWS]
-2023-04-16 11:55:46,Desktop,0,No input available.
-2023-04-16 11:55:46,Zoeken,0,[LEFT WINDOWS]
-2023-04-16 11:55:47,Desktop,0,No input available.
-2023-04-16 11:55:47,LegalEthicalMonitoringSoftwareTool – keystrokes_and_clipboard_logger.py,0,[MENU][MENU][MENU][ESC][ESC][ESC]
-2023-04-16 11:55:53,Desktop,0,No input available.
-2023-04-16 11:55:53,Task switching,0,No input available.
-2023-04-16 11:55:53,Desktop,0,No input available.
-2023-04-16 11:55:53,B2C5 PI6 - Casusdocumentatie.docx  -  2 - Word,0,No input available.
-2023-04-16 11:55:54,Desktop,0,No input available.
+2023-04-16 12:08:30,None,0,No input available.
+2023-04-16 12:08:30,None,1,"""[f1]"", "
+2023-04-16 12:08:30,LegalEthicalMonitoringSoftwareTool – keystrokes_and_clipboard_logger.py,0,[F1]
+2023-04-16 12:08:31,Naamloos - Google Chrome,0,No input available.
+2023-04-16 12:08:32,Desktop,0,No input available.
+2023-04-16 12:08:32,LegalEthicalMonitoringSoftwareTool – keystrokes_and_clipboard_logger.py,0,[F2][F3][F4][F5][F6][F7][F8][F9]
+2023-04-16 12:08:33,Task switching,0,No input available.
+2023-04-16 12:08:33,LegalEthicalMonitoringSoftwareTool – keystrokes_and_clipboard_logger.py,0,[F10][F11][F12][ESC]
+2023-04-16 12:08:36,Desktop,0,No input available.
+2023-04-16 12:08:36,Task switching,0,No input available.
+2023-04-16 12:08:36,Desktop,0,No input available.
+2023-04-16 12:08:36,Get started | PyCharm Documentation - Google Chrome,0,[CTRL]w
+2023-04-16 12:08:37,Merge pull request #26 from RainbowNova/devtool_expansion · RainbowNova/LegalEthicalMonitoringSoftwareTool@fb70c30 · GitHub - Google Chrome,0,No input available.
+2023-04-16 12:08:38,Desktop,0,No input available.
+2023-04-16 12:08:38,LegalEthicalMonitoringSoftwareTool – keystrokes_and_clipboard_logger.py,0,No input available.

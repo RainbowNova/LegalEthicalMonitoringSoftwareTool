@@ -17,6 +17,8 @@ def event_to_string(event):
         string = ' '
     elif event.name in kb.all_modifiers or event.name in ['tab', 'enter', 'Windows', 'menu', 'esc']:
         string = f"[{event.name.upper()}]"
+    elif event.name in ["f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9", "f10", "f11", "f12"]:
+        string = f"[{event.name.upper()}]"
     elif event.name != 'backspace':  # Should always be regular characters.
         string = event.name
     elif event.name == 'backspace':  # Separated from rest, to allow updates.
