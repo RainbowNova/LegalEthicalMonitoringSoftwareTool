@@ -15,6 +15,7 @@ import csv
 
 MAX_CLIPBOARD_LENGTH = 100
 
+
 def check_if_time_passed(old_time, time_passed):
     current_time = datetime.now()
     time_delta = current_time - old_time
@@ -44,7 +45,7 @@ def check_logged_data(data, data_id):
 # Main code here
 def main():
     if os.path.isfile("logged_data.csv"):
-        # Add code for sending data to database here.
+        # TODO: Add code for sending data to database here.
         os.remove("logged_data.csv")
     old_date_and_time = datetime.now()
     note_interval_seconds = 60

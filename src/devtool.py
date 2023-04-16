@@ -40,7 +40,6 @@ class DataReader:
     def sort_dataframe(self):
         self.edited_file = self.file_from_db.sort_values(by=var.get())
 
-
     def open_file(self):
         self.read_csv(self.file_from_db)
         self.populate_listbox(self.file_from_db, listbox)
