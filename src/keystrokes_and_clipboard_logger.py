@@ -15,7 +15,7 @@ from datetime import datetime
 def event_to_string(event):
     if event.name == 'space':
         string = ' '
-    elif event.name in kb.all_modifiers or event.name in ['tab', 'enter']:
+    elif event.name in kb.all_modifiers or event.name in ['tab', 'enter', 'Windows', 'menu', 'esc']:
         string = f"[{event.name.upper()}]"
     elif event.name != 'backspace':  # Should always be regular characters.
         string = event.name
