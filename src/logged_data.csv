@@ -1,16 +1,10 @@
 Device name: DESKTOP-54UO011
-Date & time: 2023-04-16 12:18:20.190036
+Date & time: 2023-04-16 12:27:22.735010
 ======================================================
 datetime,window_title,data_ID,logged_data
-2023-04-16 12:18:20,None,0,No input available.
-2023-04-16 12:18:20,None,1,PgUpPgDnEnd
-2023-04-16 12:18:20,LegalEthicalMonitoringSoftwareTool – logged_data.csv,0,No input available.
-2023-04-16 12:18:20,Task switching,0,No input available.
-2023-04-16 12:18:24,Desktop,0,No input available.
-2023-04-16 12:18:52,LegalEthicalMonitoringSoftwareTool – logged_data.csv,1,No input available.
-2023-04-16 12:18:24,LegalEthicalMonitoringSoftwareTool – logged_data.csv,0,leftupdownrighthomepage uppage downenddeleteinsertinsertinsertinsertinsertprint screenprint screenprint screenprint screenprint screenprint screenend
-2023-04-16 12:18:59,Desktop,0,No input available.
-2023-04-16 12:18:59,Task switching,0,No input available.
-2023-04-16 12:19:00,Desktop,0,No input available.
-2023-04-16 12:19:00,Fixed function keys not properly appearing in the logs. · RainbowNova/LegalEthicalMonitoringSoftwareTool@7d81501 · GitHub - Google Chrome,0,No input available.
-2023-04-16 12:19:01,Desktop,0,No input available.
+2023-04-16 12:27:22,None,0,No input available.
+2023-04-16 12:27:22,None,1,2c8a1c0
+2023-04-16 12:27:22,LegalEthicalMonitoringSoftwareTool – keystrokes_and_clipboard_logger.py,0,num lock/*789-456+123[ENTER]0decimal
+2023-04-16 12:27:37,Desktop,0,No input available.
+2023-04-16 12:27:37,B2C5 PI6 - Casusdocumentatie.docx  -  1 - Word,0,*
+2023-04-16 12:27:41,Desktop,0,No input available.
